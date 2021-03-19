@@ -1,0 +1,67 @@
+{
+	"heading": "Additional Features &amp; Benefits",
+	"optionalBackgroundColorOverride": "#0a223f",
+	"darkMode": true,
+	"ariaLabel": "Features and Benefits",
+	"tabButtons": [
+		{
+			"buttonText": "Fee-Free ATMs",
+			"ariaSelectedInitial": true
+		},
+		{
+			"buttonText": "Debit Card",
+			"ariaSelectedInitial": false
+		},
+		{
+			"buttonText": "Overdraft Line of Credit",
+			"ariaSelectedInitial": false
+		},
+		{
+			"buttonText": "Other Benefits",
+			"ariaSelectedInitial": false
+		}
+	],
+	"tabPanels": [
+		{
+			"img": {
+				"src": "https://via.placeholder.com/300x200",
+				"alt": "Man riding bicycle"
+			},
+			"heading": "Fee-Free ATM locations",
+			"body": "<p>Take advantage of PenFed’s Car Buying Service when researching and purchasing your next vehicle.</p><p>Take advantage of PenFed’s Car Buying Service when researching and purchasing your next vehicle.</p>",
+
+			"showingInitially": "visible"
+		},
+		{
+			"img": {
+				"src": "https://via.placeholder.com/300x200/000000",
+				"alt": "Man riding bicycle"
+			},
+			"heading": "Debit Card Features",
+			"body": "<ul><li><strong>Contactless Card:</strong> Receive a free contactless Visa debit card when you open a checking account</li><li><strong>Convenience:</strong> Receive a free contactless Visa debit card when you open a checking account</li><li><strong>Safety and Security:</strong> Receive a free contactless Visa debit card when you open a checking account</li></ul>",
+
+			"showingInitially": "hidden"
+		},
+		{
+			"img": {
+				"src": "https://via.placeholder.com/300x200/abc123",
+				"alt": "Man riding bicycle"
+			},
+			"heading": "Overdraft Features",
+			"body": "<p>Take advantage of PenFed’s Car Buying Service when researching and purchasing your next vehicle.</p><p>Take advantage of PenFed’s Car Buying Service when researching and purchasing your next vehicle.</p>",
+
+			"showingInitially": "hidden"
+		},
+		{
+			"img": {
+				"src": "https://via.placeholder.com/300x200/123abc",
+				"visibleFigCaption": false,
+				"alt": "Man riding bicycle"
+			},
+			"heading": "Other Features",
+			"body": "<p>Take advantage of PenFed’s Car Buying Service when researching and purchasing your next vehicle.</p><p>Take advantage of PenFed’s Car Buying Service when researching and purchasing your next vehicle.</p>",
+
+			"showingInitially": "hidden"
+		}
+	]
+}

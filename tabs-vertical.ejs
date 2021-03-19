@@ -1,0 +1,70 @@
+<section
+	class="tabs-vertical <% if (darkMode) { %>tabs-vertical--dark-mode<% } %>"
+	style="background-color: <%= optionalBackgroundColorOverride %>;"
+>
+	<div class="grid__container">
+		<% if (heading) { %>
+		<header class="tabs-vertical__header">
+			<h2 class="tabs-vertical__headline"><%= heading %></h2>
+		</header>
+		<% } %>
+		<div class="grid__row">
+			<div class="grid__col-lg-3">
+				<div class="tabs-vertical__tablist-wrapper">
+					<div class="tabs-vertical__tablist" role="tablist" aria-label="<%= ariaLabel %>">
+						<% tabButtons.forEach((tabButton, index) => { %>
+						<button
+							class="tabs-vertical__button"
+							role="tab"
+							aria-selected="<%= tabButton.ariaSelectedInitial %>"
+						>
+							<%= tabButton.buttonText %>
+						</button>
+						<% }) %>
+					</div>
+				</div>
+			</div>
+
+			<!-- should these be tabable? No, right? user should have to engage component tablist, or we should assume user wants to tab past that section-->
+			<!-- hence the importance of arrow key support -->
+			<div class="grid__col-lg-9">
+				<!-- how can i add/omt  "hidden" attribute (not value, but attribute itself) from JSON? -->
+				<% tabPanels.forEach((tabPanel, index) => { %>
+					<% if (index === 0) { %>
+					<div
+						class="tabs-vertical__tabpanel"
+						role="tabpanel"
+					>
+					<%} else { %>
+					<div
+						class="tabs-vertical__tabpanel"
+						role="tabpanel"
+						hidden
+					>
+					<% } %>
+
+					<div class="grid__row">
+						<div class="grid__col-lg-6">
+							<div class="tabpanel-wrapper">
+								<h3 class="tabpanel-headline">
+									<%= tabPanel.heading %>
+								</h3>
+								<div class="tabpanel-content">
+									<%= tabPanel.body %>
+								</div>
+							</div>
+						</div>
+						<div class="grid__col-lg-6">
+							<div class="tabpanel-content">
+								<div class="tabpanel-content__img-wrapper">
+									<img class="tabpanel-content__img" alt="<%= tabPanel.img.alt %>" src="<%= tabPanel.img.src %>" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<% }) %>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,250 @@
+.tabs-vertical {
+	padding: $size--xl $size--md;
+	// this color value gets overriden and is here defensively against pfui cascade
+	color: $color__text--body;
+	font-family: $font-family--primary;
+	// this background color value can be double overridden: by light/dark mode and by authors adding arbitrary background color inline
+	background-color: #fff;
+
+	@media (min-width: $page__width--lg) {
+		padding: $size--3xl 0;
+	}
+	// want to move to a utilites file
+	[hidden] {
+		display: none !important;
+	}
+	&--light-mode {
+		background-color: #fff;
+		.tabs-vertical__tabpanel,
+		.tabs-vertical__headline,
+		.tabs-vertical__button {
+			color: $color__text--body;
+		}
+		.tabpanel-wrapper:after {
+			background-color: $color__text--body;
+		}
+
+		.tabs-vertical__tablist-wrapper {
+			@media (max-width: $page__width--md--max) {
+				&::-webkit-scrollbar-track {
+					background-color: $color__text--body;
+				}
+			}
+		}
+	}
+	&--dark-mode {
+		background-color: $blue--navy;
+		.tabs-vertical__tabpanel,
+		.tabs-vertical__headline,
+		.tabs-vertical__button {
+			color: #fff;
+		}
+		.tabpanel-wrapper:after {
+			background-color: rgba(255, 255, 255, 0.3333);
+		}
+		.tabs-vertical__tablist-wrapper {
+			@media (max-width: $page__width--md--max) {
+				&::-webkit-scrollbar-track {
+					background-color: rgba(255, 255, 255, 0.5);
+				}
+			}
+		}
+	}
+	&__header {
+		padding-bottom: $size--md;
+		// tablet
+		@media (min-width: $page__width--sm) {
+			padding-bottom: $size--lg;
+		}
+
+		@media (min-width: $page__width--lg) {
+			// 56px
+			padding-bottom: calc(#{$size--2xl} + #{$base-unit});
+		}
+	}
+	&__headline {
+		font-weight: $font-weight--bold;
+		// one off
+		font-size: 26px;
+		line-height: $line-height--xl;
+		text-align: center;
+		// tablet
+		@media (min-width: $page__width--sm) {
+			font-size: 36px;
+		}
+
+		@media (min-width: $page__width--lg) {
+			// 40px
+			font-size: calc(#{$font-size--3xl} + #{$base-unit});
+			line-height: $line-height--3xl;
+		}
+	}
+	&__tablist-wrapper {
+		@media (max-width: $page__width--md--max) {
+			margin-bottom: $size--lg;
+			overflow-x: scroll;
+			white-space: nowrap;
+			// adding border here because some versions of iOS/mobile safari donT properly display scrollbar track styles
+			border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+			&::-webkit-scrollbar-thumb {
+				background-color: $gray--medium;
+			}
+			&::-webkit-scrollbar {
+				width: 5px;
+				height: 1px;
+			}
+
+			&::-webkit-scrollbar-track {
+				width: 100%;
+				height: 1px;
+				background-color: transparent;
+			}
+
+			&::-webkit-resizer {
+				display: none;
+			}
+		}
+	}
+	&__button {
+		border: none;
+		font-weight: $font-weight--bold;
+		font-size: $font-size--sm;
+		line-height: $line-height--md;
+		background: none;
+		box-shadow: none;
+		-webkit-tap-highlight-color: transparent;
+		&:focus {
+			outline: none;
+			// focus for desktop tabbing added back below
+			// once support for :focus-visible is better, we can truly limit desktop outline to tabbing only in a cross-browser way: https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible
+		}
+		&::marker {
+			display: none;
+		}
+		@media (max-width: $page__width--md--max) {
+			// ensures sufficently large touch target
+			min-height: $size--2xl;
+		}
+
+		@media (min-width: $page__width--lg) {
+			position: relative;
+			display: list-item;
+			// ie wants to puts bullets on anything display list-item
+			list-style: none;
+			// rough value
+			max-width: 180px;
+			padding-left: $size--xl;
+			font-size: $font-size--lg;
+			line-height: $line-height--lg;
+			-webkit-tap-highlight-color: rgba(100, 100, 100, 0.5);
+			text-align: left;
+			&:focus {
+				outline: 2px solid rgba(100, 100, 100, 0.5);
+				-webkit-focus-ring-color: rgba(100, 100, 100, 0.5);
+				-webkit-tap-highlight-color: inherit;
+			}
+			&:-moz-focusring {
+				outline: 2px solid rgba(100, 100, 100, 0.5);
+				-webkit-focus-ring-color: rgba(100, 100, 100, 0.5);
+				-webkit-tap-highlight-color: inherit;
+			}
+			&:before {
+				position: absolute;
+				top: 4px;
+				left: 0;
+				width: 1em;
+				height: 1em;
+				border: 2px solid currentColor;
+				border-radius: 50%;
+				content: '';
+			}
+			&:not(:last-child) {
+				margin-bottom: $size--md;
+			}
+		}
+		&:not([aria-selected='true']) {
+			opacity: 0.5;
+		}
+		&[aria-selected='true'] {
+			@media (min-width: $page__width--lg) {
+				&:before {
+					background-color: currentColor;
+				}
+			}
+		}
+	}
+	&__tabpanel {
+		display: flex;
+		flex-direction: column;
+
+		min-height: $base-unit * 30;
+	}
+	// grandchildren
+	.tabpanel {
+		&-wrapper {
+			@media (min-width: $page__width--lg) {
+				padding-right: $size--md;
+				&:after {
+					position: absolute;
+					top: 0;
+					right: -$base-unit;
+					width: 1px;
+					height: 100%;
+					background-color: rgba(255, 255, 255, 0.3333);
+					content: '';
+				}
+			}
+		}
+		&-headline {
+			padding-bottom: $size--sm;
+			font-weight: $font-weight--bold;
+			// need in-between value
+			font-size: calc((#{$font-size--lg} + #{$font-size--xl}) / 2);
+			line-height: $line-height--xl;
+			//tablet
+			@media (min-width: $page__width--sm) {
+				padding-bottom: $size--md;
+				// one-off
+				font-size: 20px;
+			}
+
+			@media (min-width: $page__width--lg) {
+				font-size: $font-size--2xl;
+				line-height: $line-height--2xl;
+			}
+		}
+		&-content {
+			@include rich-text-base($font-weight--light, $font-size--sm, $line-height--sm, $size--md);
+
+			@media (min-width: $page__width--sm) {
+				@include rich-text-base($font-weight--light, $font-size--sm, $line-height--xs, $size--md);
+			}
+
+			@media (min-width: $page__width--lg) {
+				@include rich-text-base($font-weight--light, $font-size--sm, $line-height--sm, $size--lg);
+			}
+			&__img-wrapper {
+				position: relative;
+				text-align: center;
+
+				@media (max-width: $page__width--md--max) {
+					padding-top: $size--xl;
+				}
+
+				@media (min-width: $page__width--sm) {
+					padding-top: $size--2xl;
+				}
+
+				@media (min-width: $page__width--lg) {
+					padding-top: 0;
+				}
+			}
+
+			&__img {
+				width: 100%;
+				max-width: 300px;
+				height: auto;
+			}
+		}
+	}
+}
