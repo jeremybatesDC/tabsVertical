@@ -1,4 +1,4 @@
-# tabsVertical
+# custom tabs vertical
 
 ```typescript
 function checkForUninitializedTabs() {
